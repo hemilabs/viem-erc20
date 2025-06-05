@@ -1,0 +1,84 @@
+{
+  "name": "viem-erc20",
+  "version": "1.0.0",
+  "description": "Viem extensions for erc20 tokens",
+  "keywords": [
+    "erc20",
+    "eth",
+    "ethereum",
+    "hemi",
+    "hemilabs",
+    "tokens",
+    "viem"
+  ],
+  "bugs": {
+    "url": "https://github.com/hemilabs/viem-erc20/issues"
+  },
+  "license": "MIT",
+  "author": {
+    "email": "gonzalo@hemi.xyz",
+    "name": "Gonzalo D'Elia"
+  },
+  "files": [
+    "!test/*",
+    "*"
+  ],
+  "repository": "hemilabs/viem-erc20",
+  "scripts": {
+    "build": "npm run clean && npm run build:esm && npm run build:types",
+    "build:esm": "tsc --noEmit false --outDir ./_esm --sourceMap",
+    "build:types": "tsc --noEmit false --declarationDir ./_types --emitDeclarationOnly --declaration --declarationMap",
+    "clean": "rm -rf ./_esm ./_types",
+    "deps:check": "knip",
+    "format:check": "prettier --check .",
+    "format:write": "prettier --write .",
+    "lint": "eslint --cache .",
+    "prepare": "husky",
+    "test": "vitest run",
+    "tsc": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "19.8.1",
+    "@tsconfig/node22": "22.0.2",
+    "better-sort-github-actions": "1.0.0",
+    "better-sort-package-json": "1.1.1",
+    "commitlint-config-bloq": "1.1.0",
+    "eslint": "8.57.1",
+    "eslint-config-bloq": "4.6.1",
+    "husky": "9.1.7",
+    "knip": "5.60.2",
+    "lint-staged": "16.1.0",
+    "prettier": "3.5.3",
+    "typescript": "5.8.3",
+    "viem": "2.22.10",
+    "vitest": "3.2.2"
+  },
+  "peerDependencies": {
+    "viem": "^2.x"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./_esm/index.js",
+      "types": "./_types/index.d.ts"
+    },
+    "./actions": {
+      "import": "./_esm/actions/index.js",
+      "types": "./_types/actions/index.d.ts"
+    }
+  },
+  "module": "./_esm/index.js",
+  "sideEffects": false,
+  "typeVersions": {
+    "*": {
+      "actions": [
+        "./_types/actions/index.d.ts"
+      ]
+    }
+  },
+  "types": "./_types/index.d.ts",
+  "typings": "./_types/index.d.ts"
+}

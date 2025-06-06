@@ -1,13 +1,15 @@
 # viem-erc20
 
+[![NPM version](https://img.shields.io/npm/v/viem-erc20)](https://www.npmjs.com/package/viem-erc20) [![Package size](https://img.shields.io/bundlephobia/minzip/viem-erc20)](https://bundlephobia.com/package/viem-erc20) [![Follow Hemi on X](https://img.shields.io/twitter/url?url=https%3A%2F%2Fx.com%2Fhemi_xyz&style=flat&logo=x&label=%40hemi_xyz&labelColor=%23ff6c15&color=%230a0a0a)](https://x.com/intent/follow?screen_name=hemi_xyz)
+
 [Viem](https://viem.sh/) extensions for [ERC20](https://docs.openzeppelin.com/contracts/4.x/api/token/erc20) tokens.
 
-## Local Setup
+## Installation
 
-1. **Install dependencies:**
+Install `viem` and `viem-erc20` as dependencies:
 
 ```sh
-npm install
+npm install viem viem-erc20
 ```
 
 ## Methods
@@ -139,4 +141,18 @@ const tx = await walletClient.approveErc20Token({
   spender: "0xSpenderAddress",
   amount: 1000000000000000000n,
 });
+```
+
+## Local Setup
+
+To install the dependencies, run:
+
+```sh
+npm install
+```
+
+To run the tests, run:
+
+```sh
+npm test
 ```

@@ -1,0 +1,21 @@
+{
+  "extends": ["bloq", "bloq/typescript", "prettier"],
+  "ignorePatterns": ["_esm/*", "_cjs/*", "_types/*"],
+  "overrides": [
+    {
+      "extends": ["bloq/typescript", "prettier"],
+      "files": ["src/**/*.ts"]
+    },
+    {
+      "extends": ["bloq/markdown", "prettier"],
+      "files": ["*.md"]
+    },
+    {
+      "extends": ["bloq/vitest", "prettier"],
+      "files": ["test/**/*.{spec,test}.{js,ts}"]
+    }
+  ],
+  "parserOptions": {
+    "sourceType": "module"
+  }
+}

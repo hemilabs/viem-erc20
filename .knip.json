@@ -1,0 +1,4 @@
+{
+  "ignoreDependencies": ["eslint-config-prettier"],
+  "entry": ["src/index.ts", "src/actions/index.ts"]
+}

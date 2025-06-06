@@ -72,13 +72,13 @@
   },
   "module": "./_esm/index.js",
   "sideEffects": false,
-  "typeVersions": {
+  "types": "./_types/index.d.ts",
+  "typesVersions": {
     "*": {
       "actions": [
         "./_types/actions/index.d.ts"
       ]
     }
   },
-  "types": "./_types/index.d.ts",
   "typings": "./_types/index.d.ts"
 }

@@ -1,6 +1,6 @@
 # viem-erc20
 
-Viem extensions for [ERC20](https://docs.openzeppelin.com/contracts/4.x/api/token/erc20) tokens.
+[Viem](https://viem.sh/) extensions for [ERC20](https://docs.openzeppelin.com/contracts/4.x/api/token/erc20) tokens.
 
 ## Local Setup
 
@@ -12,7 +12,7 @@ npm install
 
 ## Methods
 
-This package provides ESM-friendly helpers for interacting with ERC20 contracts using [viem](https://viem.sh/).
+This package provides ESM-friendly helpers for interacting with ERC20 contracts using viem.
 
 ### `getErc20TokenAllowance`
 

@@ -1,6 +1,6 @@
 {
   "name": "viem-erc20",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Viem extensions for erc20 tokens",
   "keywords": [
     "erc20",
@@ -73,13 +73,13 @@
   },
   "module": "./_esm/index.js",
   "sideEffects": false,
-  "typeVersions": {
+  "types": "./_types/index.d.ts",
+  "typesVersions": {
     "*": {
       "actions": [
         "./_types/actions/index.d.ts"
       ]
     }
   },
-  "types": "./_types/index.d.ts",
   "typings": "./_types/index.d.ts"
 }

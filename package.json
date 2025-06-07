@@ -34,6 +34,7 @@
     "format:write": "prettier --write .",
     "lint": "eslint --cache .",
     "prepare": "husky",
+    "prepublishOnly": "npm run build",
     "test": "vitest run",
     "tsc": "tsc --noEmit"
   },

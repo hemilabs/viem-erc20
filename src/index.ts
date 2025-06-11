@@ -2,6 +2,7 @@ import { type Account, type Chain, type Client, type Transport } from "viem";
 
 import { getErc20TokenAllowance } from "./public/allowance.js";
 import { getErc20TokenBalance } from "./public/balance.js";
+import { getErc20TokenDecimals } from "./public/decimals.js";
 import { getErc20TokenTotalSupply } from "./public/totalSupply.js";
 import { approveErc20Token } from "./wallet/approve.js";
 
@@ -20,6 +21,9 @@ export const erc20PublicActions =
     getErc20TokenBalance: (
       params: Parameters<typeof getErc20TokenBalance>[1],
     ) => getErc20TokenBalance(client, params),
+    getErc20TokenDecimals: (
+      params: Parameters<typeof getErc20TokenDecimals>[1],
+    ) => getErc20TokenDecimals(client, params),
     getErc20TokenTotalSupply: (
       params: Parameters<typeof getErc20TokenTotalSupply>[1],
     ) => getErc20TokenTotalSupply(client, params),

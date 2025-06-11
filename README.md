@@ -103,6 +103,26 @@ const name = await getErc20TokenName(client, {
 });
 ```
 
+### `getErc20TokenSymbol`
+
+Reads the [symbol](https://docs.openzeppelin.com/contracts/4.x/api/token/erc20#ERC20-symbol--) value of an ERC20 token contract.
+
+```ts
+getErc20TokenSymbol(client, { address });
+```
+
+- **client**: `Client` (from viem) — required
+- **address**: `Address` — ERC20 contract address (required)
+
+**Example:**
+
+```ts
+import { getErc20TokenSymbol } from "viem-erc20/actions";
+const symbol = await getErc20TokenSymbol(client, {
+  address: "0x6B175474E89094C44Da98b954EedeAC495271d0F", // DAI
+});
+```
+
 ### `getErc20TokenTotalSupply`
 
 Gets the [total supply](https://docs.openzeppelin.com/contracts/4.x/api/token/erc20#IERC20-totalSupply--) of the ERC20 token.

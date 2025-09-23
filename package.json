@@ -39,20 +39,20 @@
     "tsc": "tsc --noEmit"
   },
   "devDependencies": {
-    "@commitlint/cli": "19.8.1",
-    "@tsconfig/node22": "22.0.2",
-    "better-sort-github-actions": "1.0.0",
-    "better-sort-package-json": "1.1.1",
-    "commitlint-config-bloq": "1.1.0",
-    "eslint": "8.57.1",
-    "eslint-config-bloq": "4.6.1",
-    "husky": "9.1.7",
-    "knip": "5.60.2",
-    "lint-staged": "16.1.0",
-    "prettier": "3.5.3",
-    "typescript": "5.8.3",
-    "viem": "2.22.10",
-    "vitest": "3.2.2"
+    "@commitlint/cli": "^19.8.1",
+    "@tsconfig/node22": "^22.0.2",
+    "better-sort-github-actions": "^1.0.0",
+    "better-sort-package-json": "^1.1.1",
+    "commitlint-config-bloq": "^1.1.0",
+    "eslint": "^8.57.1",
+    "eslint-config-bloq": "^4.6.1",
+    "husky": "^9.1.7",
+    "knip": "^5.60.2",
+    "lint-staged": "^16.1.0",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.3",
+    "viem": "^2.22.10",
+    "vitest": "^3.2.2"
   },
   "peerDependencies": {
     "viem": "^2.x"

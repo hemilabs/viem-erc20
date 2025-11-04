@@ -182,7 +182,7 @@ const publicClient = createPublicClient({
 }).extend(erc20PublicActions());
 
 // Now you can call:
-const tokenAlowance = await publicClient.allowance({
+const tokenAllowance = await publicClient.allowance({
   address: "0x6B175474E89094C44Da98b954EedeAC495271d0F",
   owner: "0xYourWalletAddress",
   spender: "0xSpenderAddress",

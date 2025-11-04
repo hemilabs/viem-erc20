@@ -1,7 +1,7 @@
-export { getErc20TokenAllowance } from "../public/allowance.js";
-export { getErc20TokenBalance } from "../public/balance.js";
-export { getErc20TokenDecimals } from "../public/decimals.js";
-export { getErc20TokenName } from "../public/name.js";
-export { getErc20TokenSymbol } from "../public/symbol.js";
-export { getErc20TokenTotalSupply } from "../public/totalSupply.js";
-export { approveErc20Token } from "../wallet/approve.js";
+export { allowance } from "../public/allowance.js";
+export { balanceOf } from "../public/balanceOf.js";
+export { decimals } from "../public/decimals.js";
+export { name } from "../public/name.js";
+export { symbol } from "../public/symbol.js";
+export { totalSupply } from "../public/totalSupply.js";
+export { approve } from "../wallet/approve.js";

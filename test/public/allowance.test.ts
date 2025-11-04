@@ -3,11 +3,14 @@ import { PublicClient } from "viem";
 import { readContract } from "viem/actions";
 import { describe, it, expect, vi } from "vitest";
 
-import { getErc20TokenAllowance } from "../../src/public/allowance";
+import { allowance } from "../../src/public/allowance";
 
 vi.mock("viem/actions", () => ({
   readContract: vi.fn(),
 }));
+
+// @ts-expect-error - We only create an empty client for testing purposes
+const client: PublicClient = {};
 
 const validParameters = {
   address: zeroAddress,
@@ -15,71 +18,57 @@ const validParameters = {
   spender: zeroAddress,
 };
 
-describe("getErc20TokenAllowance", function () {
+describe("allowance", function () {
   it("should throw an error if the address is not valid", async function () {
-    // @ts-expect-error - We only create an empty client for testing purposes
-    const client: PublicClient = {};
     const parameters = { ...validParameters, address: "invalid_address" };
 
-    await expect(getErc20TokenAllowance(client, parameters)).rejects.toThrow(
+    await expect(allowance(client, parameters)).rejects.toThrow(
       "Invalid address",
     );
   });
 
   it("should throw an error if the owner address is not valid", async function () {
-    // @ts-expect-error - We only create an empty client for testing purposes
-    const client: PublicClient = {};
     const parameters = { ...validParameters, owner: "invalid_owner" };
 
-    await expect(getErc20TokenAllowance(client, parameters)).rejects.toThrow(
+    await expect(allowance(client, parameters)).rejects.toThrow(
       "Invalid owner address",
     );
   });
 
   it("should throw an error if the spender address is not valid", async function () {
-    // @ts-expect-error - We only create an empty client for testing purposes
-    const client: PublicClient = {};
     const parameters = { ...validParameters, spender: "invalid_spender" };
 
-    await expect(getErc20TokenAllowance(client, parameters)).rejects.toThrow(
+    await expect(allowance(client, parameters)).rejects.toThrow(
       "Invalid spender address",
     );
   });
 
   it("should call readContract if all addresses are valid", async function () {
-    const allowance = BigInt(0);
-    // @ts-expect-error - We only create an empty client for testing purposes
-    const client: PublicClient = {};
-    const parameters = { ...validParameters };
+    const mockedAllowance = BigInt(0);
 
-    vi.mocked(readContract).mockResolvedValueOnce(allowance);
+    vi.mocked(readContract).mockResolvedValueOnce(mockedAllowance);
 
-    const result = await getErc20TokenAllowance(client, parameters);
+    const result = await allowance(client, validParameters);
 
     expect(readContract).toHaveBeenCalledWith(client, {
       abi: expect.anything(),
-      address: zeroAddress,
-      args: [zeroAddress, zeroAddress],
+      address: validParameters.address,
+      args: [validParameters.owner, validParameters.spender],
       functionName: "allowance",
     });
-    expect(result).toBe(allowance);
+    expect(result).toBe(mockedAllowance);
   });
 
   it("should handle empty parameters gracefully", async function () {
-    // @ts-expect-error - We only create an empty client for testing purposes
-    const client: PublicClient = {};
     const parameters = {};
 
-    await expect(getErc20TokenAllowance(client, parameters)).rejects.toThrow(
+    await expect(allowance(client, parameters)).rejects.toThrow(
       "Invalid address",
     );
   });
 
   it("should handle no parameters gracefully", async function () {
-    // @ts-expect-error - We only create an empty client for testing purposes
-    const client: PublicClient = {};
-
-    await expect(getErc20TokenAllowance(client, undefined)).rejects.toThrow(
+    await expect(allowance(client, undefined)).rejects.toThrow(
       "Invalid address",
     );
   });

@@ -1,7 +1,7 @@
 import { type Address, Client, erc20Abi, isAddress } from "viem";
 import { writeContract } from "viem/actions";
 
-export const approveErc20Token = async function (
+export const approve = async function (
   client: Client,
   parameters: {
     address: Address;
@@ -22,10 +22,12 @@ export const approveErc20Token = async function (
   if (amount <= BigInt(0)) {
     throw new Error("Invalid amount, must be greater than 0");
   }
+  if (!client.account) {
+    throw new Error("Client account is not set");
+  }
 
   return writeContract(client, {
     abi: erc20Abi,
-    // @ts-expect-error: TS is complaining about client.account definition, but this works
     account: client.account,
     address,
     args: [spender, amount],

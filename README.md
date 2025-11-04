@@ -16,12 +16,12 @@ npm install viem viem-erc20
 
 This package provides ESM-friendly helpers for interacting with ERC20 contracts using viem.
 
-### `getErc20TokenAllowance`
+### `allowance`
 
 Reads the [allowance](https://docs.openzeppelin.com/contracts/4.x/api/token/erc20#IERC20-allowance-address-address-) of a spender for a given owner.
 
 ```ts
-getErc20TokenAllowance(client, { address, owner, spender });
+allowance(client, { address, owner, spender });
 ```
 
 - **client**: `Client` (from viem) — required
@@ -32,21 +32,21 @@ getErc20TokenAllowance(client, { address, owner, spender });
 **Example:**
 
 ```ts
-import { getErc20TokenAllowance } from "viem-erc20/actions";
-const allowance = await getErc20TokenAllowance(client, {
+import { allowance } from "viem-erc20/actions";
+const result = await allowance(client, {
   address: "0x6B175474E89094C44Da98b954EedeAC495271d0F", // DAI
   owner: "0xYourWalletAddress",
   spender: "0xSpenderAddress",
 });
 ```
 
-### `getErc20TokenBalance`
+### `balanceOf`
 
 Reads the [balance](https://docs.openzeppelin.com/contracts/4.x/api/token/erc20#IERC20-balanceOf-address-)
 of an account.
 
 ```ts
-getErc20TokenBalance(client, { account, address });
+balanceOf(client, { account, address });
 ```
 
 - **client**: `Client` (from viem) — required
@@ -56,19 +56,19 @@ getErc20TokenBalance(client, { account, address });
 **Example:**
 
 ```ts
-import { getErc20TokenBalance } from "viem-erc20/actions";
-const balance = await getErc20TokenBalance(client, {
+import { balanceOf } from "viem-erc20/actions";
+const balance = await balanceOf(client, {
   account: "0xYourWalletAddress",
   address: "0x6B175474E89094C44Da98b954EedeAC495271d0F", // DAI
 });
 ```
 
-### `getErc20TokenDecimals`
+### `decimals`
 
 Reads the [decimals](https://docs.openzeppelin.com/contracts/4.x/api/token/erc20#ERC20-decimals--) value of an ERC20 token contract.
 
 ```ts
-getErc20TokenDecimals(client, { address });
+decimals(client, { address });
 ```
 
 - **client**: `Client` (from viem) — required
@@ -77,18 +77,18 @@ getErc20TokenDecimals(client, { address });
 **Example:**
 
 ```ts
-import { getErc20TokenDecimals } from "viem-erc20/actions";
-const decimals = await getErc20TokenDecimals(client, {
+import { decimals } from "viem-erc20/actions";
+const tokenDecimals = await decimals(client, {
   address: "0x6B175474E89094C44Da98b954EedeAC495271d0F", // DAI
 });
 ```
 
-### `getErc20TokenName`
+### `name`
 
 Reads the [name](https://docs.openzeppelin.com/contracts/4.x/api/token/erc20#ERC20-name--) value of an ERC20 token contract.
 
 ```ts
-getErc20TokenName(client, { address });
+name(client, { address });
 ```
 
 - **client**: `Client` (from viem) — required
@@ -97,18 +97,18 @@ getErc20TokenName(client, { address });
 **Example:**
 
 ```ts
-import { getErc20TokenName } from "viem-erc20/actions";
-const name = await getErc20TokenName(client, {
+import { name } from "viem-erc20/actions";
+const tokenName = await name(client, {
   address: "0x6B175474E89094C44Da98b954EedeAC495271d0F", // DAI
 });
 ```
 
-### `getErc20TokenSymbol`
+### `symbol`
 
 Reads the [symbol](https://docs.openzeppelin.com/contracts/4.x/api/token/erc20#ERC20-symbol--) value of an ERC20 token contract.
 
 ```ts
-getErc20TokenSymbol(client, { address });
+symbol(client, { address });
 ```
 
 - **client**: `Client` (from viem) — required
@@ -117,18 +117,18 @@ getErc20TokenSymbol(client, { address });
 **Example:**
 
 ```ts
-import { getErc20TokenSymbol } from "viem-erc20/actions";
-const symbol = await getErc20TokenSymbol(client, {
+import { symbol } from "viem-erc20/actions";
+const tokenSymbol = await symbol(client, {
   address: "0x6B175474E89094C44Da98b954EedeAC495271d0F", // DAI
 });
 ```
 
-### `getErc20TokenTotalSupply`
+### `totalSupply`
 
 Gets the [total supply](https://docs.openzeppelin.com/contracts/4.x/api/token/erc20#IERC20-totalSupply--) of the ERC20 token.
 
 ```ts
-getErc20TokenTotalSupply(client, { address });
+totalSupply(client, { address });
 ```
 
 - **client**: `Client` (from viem) — required
@@ -137,18 +137,18 @@ getErc20TokenTotalSupply(client, { address });
 **Example:**
 
 ```ts
-import { getErc20TokenTotalSupply } from "viem-erc20/actions";
-const totalSupply = await getErc20TokenTotalSupply(client, {
+import { totalSupply } from "viem-erc20/actions";
+const tokenSupply = await totalSupply(client, {
   address: "0x6B175474E89094C44Da98b954EedeAC495271d0F", // DAI
 });
 ```
 
-### `approveErc20Token`
+### `approve`
 
 Sends an [approval](https://docs.openzeppelin.com/contracts/4.x/api/token/erc20#IERC20-approve-address-uint256-) transaction to allow a spender to spend tokens on behalf of the owner.
 
 ```ts
-approveErc20Token(walletClient, { address, spender, amount });
+approve(walletClient, { address, spender, amount });
 ```
 
 - **walletClient**: `WalletClient` (from viem) — required
@@ -159,8 +159,8 @@ approveErc20Token(walletClient, { address, spender, amount });
 **Example:**
 
 ```ts
-import { approveErc20Token } from "viem-erc20/actions";
-const tx = await approveErc20Token(walletClient, {
+import { approve } from "viem-erc20/actions";
+const tx = await approve(walletClient, {
   address: "0x6B175474E89094C44Da98b954EedeAC495271d0F", // DAI
   spender: "0xSpenderAddress",
   amount: 1000000000000000000n, // 1 DAI (in wei)
@@ -182,7 +182,7 @@ const publicClient = createPublicClient({
 }).extend(erc20PublicActions());
 
 // Now you can call:
-const allowance = await publicClient.getErc20TokenAllowance({
+const tokenAllowance = await publicClient.allowance({
   address: "0x6B175474E89094C44Da98b954EedeAC495271d0F",
   owner: "0xYourWalletAddress",
   spender: "0xSpenderAddress",
@@ -196,7 +196,7 @@ const walletClient = createWalletClient({
 }).extend(erc20WalletActions());
 
 // Now you can call:
-const tx = await walletClient.approveErc20Token({
+const tx = await walletClient.approve({
   address: "0x6B175474E89094C44Da98b954EedeAC495271d0F",
   spender: "0xSpenderAddress",
   amount: 1000000000000000000n,

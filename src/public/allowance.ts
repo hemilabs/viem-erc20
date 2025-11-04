@@ -1,7 +1,7 @@
 import { type Address, type Client, erc20Abi, isAddress } from "viem";
 import { readContract } from "viem/actions";
 
-export const getErc20TokenAllowance = async function (
+export const allowance = async function (
   client: Client,
   parameters: { address: Address; owner: Address; spender: Address },
 ) {

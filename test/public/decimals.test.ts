@@ -2,56 +2,50 @@ import { zeroAddress, PublicClient } from "viem";
 import { readContract } from "viem/actions";
 import { describe, it, expect, vi } from "vitest";
 
-import { getErc20TokenDecimals } from "../../src/public/decimals";
+import { decimals } from "../../src/public/decimals";
 
 vi.mock("viem/actions", () => ({
   readContract: vi.fn(),
 }));
 
-describe("getErc20TokenDecimals", function () {
+// @ts-expect-error - We only create an empty client for testing purposes
+const client: PublicClient = {};
+
+describe("decimals", function () {
   it("should throw an error if the token address is not valid", async function () {
-    // @ts-expect-error - We only create an empty client for testing purposes
-    const client: PublicClient = {};
     const parameters = { address: "invalid_address" };
 
-    await expect(getErc20TokenDecimals(client, parameters)).rejects.toThrow(
+    await expect(decimals(client, parameters)).rejects.toThrow(
       "Invalid token address",
     );
   });
 
   it("should call readContract if the address is valid", async function () {
-    const decimals = 18;
-    // @ts-expect-error - We only create an empty client for testing purposes
-    const client: PublicClient = {};
+    const expectedDecimals = 18;
     const parameters = { address: zeroAddress };
 
-    vi.mocked(readContract).mockResolvedValueOnce(decimals);
+    vi.mocked(readContract).mockResolvedValueOnce(expectedDecimals);
 
-    const result = await getErc20TokenDecimals(client, parameters);
+    const result = await decimals(client, parameters);
 
     expect(readContract).toHaveBeenCalledWith(client, {
       abi: expect.anything(),
-      address: zeroAddress,
+      address: parameters.address,
       functionName: "decimals",
     });
-    expect(result).toBe(decimals);
+    expect(result).toBe(expectedDecimals);
   });
 
   it("should handle empty parameters gracefully", async function () {
-    // @ts-expect-error - We only create an empty client for testing purposes
-    const client: PublicClient = {};
     const parameters = {};
 
-    await expect(getErc20TokenDecimals(client, parameters)).rejects.toThrow(
+    await expect(decimals(client, parameters)).rejects.toThrow(
       "Invalid token address",
     );
   });
 
   it("should handle no parameters gracefully", async function () {
-    // @ts-expect-error - We only create an empty client for testing purposes
-    const client: PublicClient = {};
-
-    await expect(getErc20TokenDecimals(client, undefined)).rejects.toThrow(
+    await expect(decimals(client, undefined)).rejects.toThrow(
       "Invalid token address",
     );
   });

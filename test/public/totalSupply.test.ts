@@ -2,61 +2,54 @@ import { PublicClient, zeroAddress } from "viem";
 import { readContract } from "viem/actions";
 import { describe, it, expect, vi } from "vitest";
 
-import { getErc20TokenTotalSupply } from "../../src/public/totalSupply";
+import { totalSupply } from "../../src/public/totalSupply";
 
 vi.mock("viem/actions", () => ({
   readContract: vi.fn(),
 }));
 
+// @ts-expect-error - We only create an empty client for testing purposes
+const client: PublicClient = {};
+
 const validParameters = {
   address: zeroAddress,
 };
 
-describe("getErc20TokenTotalSupply", function () {
+describe("totalSupply", function () {
   it("should throw an error if the address is not valid", async function () {
-    // @ts-expect-error - We only create an empty client for testing purposes
-    const client: PublicClient = {};
     const parameters = { address: "invalid_address" };
 
-    await expect(getErc20TokenTotalSupply(client, parameters)).rejects.toThrow(
+    await expect(totalSupply(client, parameters)).rejects.toThrow(
       "Invalid address",
     );
   });
 
   it("should call readContract if the address is valid", async function () {
-    const totalSupply = BigInt(1000);
-    // @ts-expect-error - We only create an empty client for testing purposes
-    const client: PublicClient = {};
-    const parameters = { ...validParameters };
+    const expectedSupply = BigInt(1000);
 
-    vi.mocked(readContract).mockResolvedValueOnce(totalSupply);
+    vi.mocked(readContract).mockResolvedValueOnce(expectedSupply);
 
-    const result = await getErc20TokenTotalSupply(client, parameters);
+    const result = await totalSupply(client, validParameters);
 
     expect(readContract).toHaveBeenCalledWith(client, {
       abi: expect.anything(),
-      address: zeroAddress,
+      address: validParameters.address,
       args: [],
       functionName: "totalSupply",
     });
-    expect(result).toBe(totalSupply);
+    expect(result).toBe(expectedSupply);
   });
 
   it("should handle empty parameters gracefully", async function () {
-    // @ts-expect-error - We only create an empty client for testing purposes
-    const client: PublicClient = {};
     const parameters = {};
 
-    await expect(getErc20TokenTotalSupply(client, parameters)).rejects.toThrow(
+    await expect(totalSupply(client, parameters)).rejects.toThrow(
       "Invalid address",
     );
   });
 
   it("should handle no parameters gracefully", async function () {
-    // @ts-expect-error - We only create an empty client for testing purposes
-    const client: PublicClient = {};
-
-    await expect(getErc20TokenTotalSupply(client, undefined)).rejects.toThrow(
+    await expect(totalSupply(client, undefined)).rejects.toThrow(
       "Invalid address",
     );
   });

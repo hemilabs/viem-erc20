@@ -1,12 +1,12 @@
 import { type Account, type Chain, type Client, type Transport } from "viem";
 
-import { getErc20TokenAllowance } from "./public/allowance.js";
-import { getErc20TokenBalance } from "./public/balance.js";
-import { getErc20TokenDecimals } from "./public/decimals.js";
-import { getErc20TokenName } from "./public/name.js";
-import { getErc20TokenSymbol } from "./public/symbol.js";
-import { getErc20TokenTotalSupply } from "./public/totalSupply.js";
-import { approveErc20Token } from "./wallet/approve.js";
+import { allowance } from "./public/allowance.js";
+import { balanceOf } from "./public/balanceOf.js";
+import { decimals } from "./public/decimals.js";
+import { name } from "./public/name.js";
+import { symbol } from "./public/symbol.js";
+import { totalSupply } from "./public/totalSupply.js";
+import { approve } from "./wallet/approve.js";
 
 export const erc20PublicActions =
   () =>
@@ -17,25 +17,18 @@ export const erc20PublicActions =
   >(
     client: Client<TTransport, TChain, TAccount>,
   ) => ({
-    getErc20TokenAllowance: (
-      params: Parameters<typeof getErc20TokenAllowance>[1],
-    ) => getErc20TokenAllowance(client, params),
-    getErc20TokenBalance: (
-      params: Parameters<typeof getErc20TokenBalance>[1],
-    ) => getErc20TokenBalance(client, params),
-    getErc20TokenDecimals: (
-      params: Parameters<typeof getErc20TokenDecimals>[1],
-    ) => getErc20TokenDecimals(client, params),
-    getErc20TokenName: (params: Parameters<typeof getErc20TokenName>[1]) =>
-      getErc20TokenName(client, params),
-    getErc20TokenSymbol: (params: Parameters<typeof getErc20TokenSymbol>[1]) =>
-      getErc20TokenSymbol(client, params),
-    getErc20TokenTotalSupply: (
-      params: Parameters<typeof getErc20TokenTotalSupply>[1],
-    ) => getErc20TokenTotalSupply(client, params),
+    allowance: (params: Parameters<typeof allowance>[1]) =>
+      allowance(client, params),
+    balanceOf: (params: Parameters<typeof balanceOf>[1]) =>
+      balanceOf(client, params),
+    decimals: (params: Parameters<typeof decimals>[1]) =>
+      decimals(client, params),
+    name: (params: Parameters<typeof name>[1]) => name(client, params),
+    symbol: (params: Parameters<typeof symbol>[1]) => symbol(client, params),
+    totalSupply: (params: Parameters<typeof totalSupply>[1]) =>
+      totalSupply(client, params),
   });
 
 export const erc20WalletActions = () => (client: Client) => ({
-  approveErc20Token: (params: Parameters<typeof approveErc20Token>[1]) =>
-    approveErc20Token(client, params),
+  approve: (params: Parameters<typeof approve>[1]) => approve(client, params),
 });

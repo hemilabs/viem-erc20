@@ -20,15 +20,18 @@
     "name": "Gonzalo D'Elia"
   },
   "files": [
-    "!test/*",
-    "*"
+    "_cjs",
+    "_esm",
+    "_types",
+    "src/**/*.ts"
   ],
   "repository": "hemilabs/viem-erc20",
   "scripts": {
-    "build": "npm run clean && npm run build:esm && npm run build:types",
+    "build": "npm run clean && npm run build:cjs && npm run build:esm && npm run build:types",
+    "build:cjs": "tsc --noEmit false --module CommonJS --moduleResolution node --outDir ./_cjs --sourceMap && echo '{\"type\":\"commonjs\"}' > ./_cjs/package.json",
     "build:esm": "tsc --noEmit false --outDir ./_esm --sourceMap",
     "build:types": "tsc --noEmit false --declarationDir ./_types --emitDeclarationOnly --declaration --declarationMap",
-    "clean": "rm -rf ./_esm ./_types",
+    "clean": "rm -rf ./_cjs ./_esm ./_types",
     "deps:check": "knip",
     "format:check": "prettier --check .",
     "format:write": "prettier --write .",
@@ -64,10 +67,12 @@
   "exports": {
     ".": {
       "import": "./_esm/index.js",
+      "require": "./_cjs/index.js",
       "types": "./_types/index.d.ts"
     },
     "./actions": {
       "import": "./_esm/actions/index.js",
+      "require": "./_cjs/actions/index.js",
       "types": "./_types/actions/index.d.ts"
     }
   },

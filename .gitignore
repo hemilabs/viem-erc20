@@ -1,6 +1,7 @@
 .eslintcache
 .DS_Store
 .vscode
+_cjs
 _esm
 _types
 node_modules

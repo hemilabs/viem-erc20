@@ -10,12 +10,5 @@ jobs:
     permissions:
       contents: read
       id-token: write
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-        with:
-          fetch-depth: 1
-      - uses: hemilabs/actions/setup-node-env@main
-      - run: npm run --if-present prepublishOnly
-      # provenance is enabled by default in trusted publishing
-      - run: npm publish
+    uses: hemilabs/actions/.github/workflows/npm-publish.yml@v2
+    secrets: inherit

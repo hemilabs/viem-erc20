@@ -1,6 +1,6 @@
 {
   "name": "viem-erc20",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Viem extensions for erc20 tokens",
   "keywords": [
     "erc20",

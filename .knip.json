@@ -1,4 +1,5 @@
 {
   "ignoreDependencies": ["eslint-config-prettier"],
-  "entry": ["src/index.ts", "src/actions/index.ts"]
+  "entry": ["src/index.ts", "src/actions/index.ts", "test/e2e/setup.ts"],
+  "ignore": ["test/e2e/env.d.ts"]
 }

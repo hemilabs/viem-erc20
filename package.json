@@ -39,10 +39,12 @@
     "prepare": "husky",
     "prepublishOnly": "npm run build",
     "test": "vitest run",
+    "test:e2e": "CI=true vitest run test/e2e",
     "tsc": "tsc --noEmit"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",
+    "@hemilabs/anvil-fork-setup": "^1.0.1",
     "@tsconfig/node22": "^22.0.2",
     "better-sort-github-actions": "^1.0.0",
     "better-sort-package-json": "^1.1.1",
@@ -55,13 +57,13 @@
     "prettier": "^3.5.3",
     "typescript": "^5.8.3",
     "viem": "^2.22.10",
-    "vitest": "^3.2.2"
+    "vitest": "^4.1.2"
   },
   "peerDependencies": {
     "viem": "^2.x"
   },
   "engines": {
-    "node": ">=20"
+    "node": "^20.19.0 || >=22.12.0"
   },
   "type": "module",
   "exports": {

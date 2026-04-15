@@ -9,7 +9,7 @@ import { approve } from "../../src/wallet/approve";
 
 // Using a known token from the Hemi chain
 const hemiToken = "0x99e3dE3817F6081B2568208337ef83295b7f591D" as const;
-// well knon mnemonic from Anvil
+// well known mnemonic from Anvil
 const anvilMnemonic =
   "test test test test test test test test test test test junk";
 

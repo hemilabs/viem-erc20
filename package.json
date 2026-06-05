@@ -27,7 +27,7 @@
   ],
   "repository": "hemilabs/viem-erc20",
   "scripts": {
-    "build": "npm run clean && npm run build:cjs && npm run build:esm && npm run build:types",
+    "build": "pnpm run clean && pnpm run build:cjs && pnpm run build:esm && pnpm run build:types",
     "build:cjs": "tsc --noEmit false --module CommonJS --moduleResolution node --outDir ./_cjs --sourceMap && echo '{\"type\":\"commonjs\"}' > ./_cjs/package.json",
     "build:esm": "tsc --noEmit false --outDir ./_esm --sourceMap",
     "build:types": "tsc --noEmit false --declarationDir ./_types --emitDeclarationOnly --declaration --declarationMap",
@@ -37,7 +37,7 @@
     "format:write": "prettier --write .",
     "lint": "eslint --cache .",
     "prepare": "husky",
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "pnpm run build",
     "test": "vitest run",
     "test:e2e": "CI=true vitest run test/e2e",
     "tsc": "tsc --noEmit"
@@ -65,6 +65,7 @@
   "engines": {
     "node": "^20.19.0 || >=22.12.0"
   },
+  "packageManager": "pnpm@11.5.2",
   "type": "module",
   "exports": {
     ".": {

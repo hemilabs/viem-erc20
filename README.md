@@ -205,14 +205,20 @@ const tx = await walletClient.approve({
 
 ## Local Setup
 
+This repository uses [pnpm](https://pnpm.io) as the package manager. Enable [Corepack](https://nodejs.org/api/corepack.html) to use the pinned version automatically:
+
+```sh
+corepack enable
+```
+
 To install the dependencies, run:
 
 ```sh
-npm install
+pnpm install
 ```
 
 To run the tests, run:
 
 ```sh
-npm test
+pnpm test
 ```

@@ -43,7 +43,7 @@
     "tsc": "tsc --noEmit"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.8.1",
+    "@commitlint/cli": "^21.0.2",
     "@hemilabs/anvil-fork-setup": "^2.0.0",
     "@tsconfig/node22": "^22.0.2",
     "better-sort-github-actions": "^1.0.0",

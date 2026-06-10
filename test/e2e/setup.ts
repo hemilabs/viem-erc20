@@ -1,4 +1,4 @@
-import { anvilFork } from "@hemilabs/anvil-fork-setup";
+import { anvilFork } from "@hemilabs/anvil-fork-setup/vitest";
 import { hemi } from "viem/chains";
 
 export default anvilFork({

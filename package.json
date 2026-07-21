@@ -50,7 +50,7 @@
     "better-sort-package-json": "^1.1.1",
     "commitlint-config-bloq": "^1.1.0",
     "eslint": "^8.57.1",
-    "eslint-config-bloq": "^4.6.1",
+    "eslint-config-bloq": "^4.8.2",
     "husky": "^9.1.7",
     "knip": "^6.15.0",
     "lint-staged": "^17.0.7",

@@ -29,8 +29,8 @@ importers:
         specifier: ^8.57.1
         version: 8.57.1
       eslint-config-bloq:
-        specifier: ^4.6.1
-        version: 4.8.1(@types/estree@1.0.9)(eslint@8.57.1)(typescript@5.9.3)(vitest@4.1.7(@types/node@25.9.1)(vite@8.0.14(@types/node@25.9.1)(jiti@2.7.0)(yaml@2.9.0)))
+        specifier: ^4.8.2
+        version: 4.8.2(@types/estree@1.0.9)(eslint@8.57.1)(typescript@5.9.3)(vitest@4.1.7(@types/node@25.9.1)(vite@8.0.14(@types/node@25.9.1)(jiti@2.7.0)(yaml@2.9.0)))
       husky:
         specifier: ^9.1.7
         version: 9.1.7
@@ -2511,11 +2511,11 @@ packages:
     peerDependencies:
       eslint: ">=6.0.0"
 
-  eslint-config-bloq@4.8.1:
+  eslint-config-bloq@4.8.2:
     resolution:
       {
-        integrity: sha512-g3zAO96gloLwrWpa0AW6+ziGSyY6ru8QMEUUIRhLRasN//DWaP1R6WjOWwgmVQCse+Bx4k/huJvR6ERbZPVOGw==,
-        tarball: https://registry.npmjs.org/eslint-config-bloq/-/eslint-config-bloq-4.8.1.tgz,
+        integrity: sha512-LHpaTtRX7e6YgK9uypiVhjOFk+aieE3GG0c/lrsFFxauuvP20w+a7ndhWccUASBul/gfQ7z6On0cdb0G7dEiRg==,
+        tarball: https://registry.npmjs.org/eslint-config-bloq/-/eslint-config-bloq-4.8.2.tgz,
       }
     engines: { node: ^18.18.0 || ^20.9.0 || >=21.1.0 }
     peerDependencies:
@@ -3163,6 +3163,7 @@ packages:
         tarball: https://registry.npmjs.org/git-raw-commits/-/git-raw-commits-5.0.1.tgz,
       }
     engines: { node: ">=18" }
+    deprecated: Deprecated and no longer maintained. Use @conventional-changelog/git-client instead.
     hasBin: true
 
   glob-parent@5.1.2:
@@ -6806,7 +6807,7 @@ snapshots:
       eslint: 8.57.1
       semver: 7.8.1
 
-  eslint-config-bloq@4.8.1(@types/estree@1.0.9)(eslint@8.57.1)(typescript@5.9.3)(vitest@4.1.7(@types/node@25.9.1)(vite@8.0.14(@types/node@25.9.1)(jiti@2.7.0)(yaml@2.9.0))):
+  eslint-config-bloq@4.8.2(@types/estree@1.0.9)(eslint@8.57.1)(typescript@5.9.3)(vitest@4.1.7(@types/node@25.9.1)(vite@8.0.14(@types/node@25.9.1)(jiti@2.7.0)(yaml@2.9.0))):
     dependencies:
       "@typescript-eslint/eslint-plugin": 8.60.0(@typescript-eslint/parser@8.60.0(eslint@8.57.1)(typescript@5.9.3))(eslint@8.57.1)(typescript@5.9.3)
       "@typescript-eslint/parser": 8.60.0(eslint@8.57.1)(typescript@5.9.3)

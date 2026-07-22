@@ -1,5 +1,5 @@
 import { decodeFunctionData, erc20Abi, isHex, zeroAddress } from "viem";
-import { WalletClient } from "viem";
+import { type WalletClient } from "viem";
 import { writeContract } from "viem/actions";
 import { hemiSepolia } from "viem/chains";
 import { describe, it, expect, vi } from "vitest";

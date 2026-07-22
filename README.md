@@ -167,6 +167,27 @@ const tx = await approve(walletClient, {
 });
 ```
 
+### `encodeApproveData`
+
+Returns the ABI-encoded call data for an [approval](https://docs.openzeppelin.com/contracts/4.x/api/token/erc20#IERC20-approve-address-uint256-) without sending a transaction. Useful for batching, multicall, or building a transaction manually.
+
+```ts
+encodeApproveData({ spender, amount });
+```
+
+- **spender**: `Address` — Spender address (required)
+- **amount**: `bigint` — Amount to approve (required, must be > 0)
+
+**Example:**
+
+```ts
+import { encodeApproveData } from "viem-erc20/actions";
+const data = encodeApproveData({
+  spender: "0xSpenderAddress",
+  amount: 1000000000000000000n, // 1 token (in wei)
+});
+```
+
 ## Usage with `.extend()`
 
 You can extend your viem client with ERC20 actions using `.extend()` and the provided helpers:

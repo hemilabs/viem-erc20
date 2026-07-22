@@ -1,6 +1,6 @@
 import {
   type Address,
-  Client,
+  type Client,
   encodeFunctionData,
   erc20Abi,
   isAddress,

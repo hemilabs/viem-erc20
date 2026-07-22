@@ -4,4 +4,4 @@ export { decimals } from "../public/decimals.js";
 export { name } from "../public/name.js";
 export { symbol } from "../public/symbol.js";
 export { totalSupply } from "../public/totalSupply.js";
-export { approve } from "../wallet/approve.js";
+export { approve, encodeApproveData } from "../wallet/approve.js";

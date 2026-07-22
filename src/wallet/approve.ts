@@ -33,11 +33,10 @@ export const approve = async function (
   if (!isAddress(address)) {
     throw new Error("Invalid address");
   }
+  assertApproveParams({ amount, spender });
   if (!client.account) {
     throw new Error("Client account is not set");
   }
-
-  assertApproveParams({ amount, spender });
 
   return writeContract(client, {
     abi: erc20Abi,

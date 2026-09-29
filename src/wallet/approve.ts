@@ -20,8 +20,8 @@ const assertApproveParams = function (parameters: ApproveParams) {
   if (!isAddress(spender)) {
     throw new Error("Invalid spender address");
   }
-  if (amount <= BigInt(0)) {
-    throw new Error("Invalid amount, must be greater than 0");
+  if (amount < BigInt(0)) {
+    throw new Error("Invalid amount, must be greater than or equal to 0");
   }
 };
 

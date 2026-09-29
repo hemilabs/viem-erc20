@@ -154,7 +154,7 @@ approve(walletClient, { address, spender, amount });
 - **walletClient**: `WalletClient` (from viem) — required
 - **address**: `Address` — ERC20 contract address (required)
 - **spender**: `Address` — Spender address (required)
-- **amount**: `bigint` — Amount to approve (required, must be > 0)
+- **amount**: `bigint` — Amount to approve (required, must be >= 0)
 
 **Example:**
 
@@ -176,7 +176,7 @@ encodeApproveData({ spender, amount });
 ```
 
 - **spender**: `Address` — Spender address (required)
-- **amount**: `bigint` — Amount to approve (required, must be > 0)
+- **amount**: `bigint` — Amount to approve (required, must be >= 0)
 
 **Example:**
 

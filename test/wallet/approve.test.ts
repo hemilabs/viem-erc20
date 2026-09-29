@@ -42,11 +42,11 @@ describe("approve", function () {
     await expect(approve(client, parameters)).rejects.toThrow("Invalid amount");
   });
 
-  it("should throw an error if the amount is less than or equal to 0", async function () {
-    const parameters = { ...validParameters, amount: BigInt(0) };
+  it("should throw an error if the amount is less than 0", async function () {
+    const parameters = { ...validParameters, amount: BigInt(-1) };
 
     await expect(approve(client, parameters)).rejects.toThrow(
-      "Invalid amount, must be greater than 0",
+      "Invalid amount, must be greater than or equal to 0",
     );
   });
 
@@ -78,6 +78,23 @@ describe("approve", function () {
     });
     expect(result).toEqual({ success: true });
   });
+
+  it("should call writeContract if the amount is 0", async function () {
+    vi.mocked(writeContract).mockResolvedValueOnce({ success: true });
+    const parameters = { ...validParameters, amount: BigInt(0) };
+
+    const result = await approve(client, parameters);
+
+    expect(writeContract).toHaveBeenCalledWith(client, {
+      abi: expect.anything(),
+      account: client.account,
+      address: parameters.address,
+      args: [parameters.spender, BigInt(0)],
+      chain: client.chain,
+      functionName: "approve",
+    });
+    expect(result).toEqual({ success: true });
+  });
 });
 
 describe("encodeApproveData", function () {
@@ -102,11 +119,11 @@ describe("encodeApproveData", function () {
     );
   });
 
-  it("should throw an error if the amount is less than or equal to 0", function () {
-    const parameters = { ...validEncodeParameters, amount: BigInt(0) };
+  it("should throw an error if the amount is less than 0", function () {
+    const parameters = { ...validEncodeParameters, amount: BigInt(-1) };
 
     expect(() => encodeApproveData(parameters)).toThrow(
-      "Invalid amount, must be greater than 0",
+      "Invalid amount, must be greater than or equal to 0",
     );
   });
 
@@ -121,6 +138,17 @@ describe("encodeApproveData", function () {
     expect(isHex(data)).toBe(true);
     expect(decodeFunctionData({ abi: erc20Abi, data })).toEqual({
       args: [validEncodeParameters.spender, validEncodeParameters.amount],
+      functionName: "approve",
+    });
+  });
+
+  it("should return the encoded call data if the amount is 0", function () {
+    const parameters = { ...validEncodeParameters, amount: BigInt(0) };
+
+    const data = encodeApproveData(parameters);
+
+    expect(decodeFunctionData({ abi: erc20Abi, data })).toEqual({
+      args: [parameters.spender, BigInt(0)],
       functionName: "approve",
     });
   });
